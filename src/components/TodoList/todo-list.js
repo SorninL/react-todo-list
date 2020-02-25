@@ -43,10 +43,10 @@ class TodoList extends React.Component {
                 <p>Task count : {this.state.tasksContent.length}</p>
                 <form onSubmit={this.handleSubmit}>
                     <label>
-                        <p>Ajouter une tâche :</p>
+                        <p>Add a task</p>
                         <input type="text" value={this.state.value} onChange={this.handleChange}/>
                     </label>
-                    <input type="submit" value="Ajouter"/>
+                    <input type="submit" value="Add"/>
                 </form>
                 <ul>
                     {

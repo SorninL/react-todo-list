@@ -5,7 +5,7 @@ class TryComponent extends React.Component {
     constructor(props) {
         super(props);
         this.state = {
-            pokemon: '',
+            pokemon: 'No Pokemon selected',
             value: ''
         };
         this.handleChange = this.handleChange.bind(this);
@@ -14,8 +14,7 @@ class TryComponent extends React.Component {
 
     static capitalizeName(pokemonName) {
         if (!pokemonName) return;
-        const result = pokemonName.charAt(0).toUpperCase() + pokemonName.slice(1);
-        return result;
+        return pokemonName.charAt(0).toUpperCase() + pokemonName.slice(1);
     }
 
     handleSubmit(event) {
@@ -37,9 +36,8 @@ class TryComponent extends React.Component {
                         <p>Enter Pokemon ID :</p>
                         <input type="text" value={this.state.value} onChange={this.handleChange}/>
                     </label>
-                    <input type="submit"/>
+                    <input type="submit" value="This one !"/>
                 </form>
-                <h1 onClick={(e) => this.displayPokemon()}>Try Me</h1>
                 <h2>{this.state.pokemon}</h2>
             </div>
         )

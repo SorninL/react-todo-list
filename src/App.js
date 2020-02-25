@@ -25,7 +25,7 @@ function App() {
             <Route path="/todo">
               <TodoList/>
             </Route>
-            <Route path="/try">
+            <Route path="/pokemon">
               <TryComponent/>
             </Route>
           </Switch>
@@ -35,22 +35,22 @@ function App() {
             <Route exact path="/">
               <a
                   className="App-link"
-                  href="/try"
+                  href="/pokemon"
                   rel="noopener noreferrer"
               >
-                Go to try
+                Go to Pokemons
               </a>
             </Route>
             <Route path="/todo">
               <a
                 className="App-link"
-                href="/try"
+                href="/pokemon"
                 rel="noopener noreferrer"
               >
-                Go to try
+                Go to Pokemon
               </a>
             </Route>
-            <Route path="/try">
+            <Route path="/pokemon">
               <a
                   className="App-link"
                   href="/todo"
