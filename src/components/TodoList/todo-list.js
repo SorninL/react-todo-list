@@ -1,4 +1,5 @@
 import React from 'react';
+import './todo-list.css';
 
 class TodoList extends React.Component {
     constructor(props) {
@@ -49,7 +50,7 @@ class TodoList extends React.Component {
                 </form>
                 <ul>
                     {
-                        this.state.tasksContent.map((el, index) => <li onClick={(e) => this.deleteTask(e, el, index)} key={index}>{el}</li>)
+                        this.state.tasksContent.map((el, index) => <p className="listItem" onClick={(e) => this.deleteTask(e, el, index)} key={index}>{el}</p>)
                     }
                 </ul>
             </div>
