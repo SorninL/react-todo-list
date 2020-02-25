@@ -1,15 +1,4 @@
 const apiUrl = 'https://pokeapi.co/api/v2/';
-function getPokemonById(id) {
-    if (!id) return;
-    if (id < 0) return;
-    const url = `${apiUrl}pokemon/${id}`;
-    fetch(url).then(result => {
-        result.json().then(data => {
-            return data.name;
-
-        })
-    });
-}
 
 let getPokemonByIdPromise = (pokemonId) => {
     return new Promise(((resolve, reject) => {
@@ -24,4 +13,4 @@ let getPokemonByIdPromise = (pokemonId) => {
     }))
 };
 
-export {getPokemonById, getPokemonByIdPromise};
+export {getPokemonByIdPromise};
