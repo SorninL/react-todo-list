@@ -1,11 +1,12 @@
 import React from 'react';
-import {getPokemonByIdPromise} from "../../services/PokeFetch/pokefetch";
+import {getPokemonNameByIdPromise, getPokemonFrontSpritesByIdPromise} from "../../services/PokeFetch/pokefetch";
 
 class TryComponent extends React.Component {
     constructor(props) {
         super(props);
         this.state = {
             pokemon: 'No Pokemon selected',
+            pokemonSprites: '',
             value: ''
         };
         this.handleChange = this.handleChange.bind(this);
@@ -18,9 +19,12 @@ class TryComponent extends React.Component {
     }
 
     handleSubmit(event) {
-        getPokemonByIdPromise(this.state.value).then(pokemonName => {
+        getPokemonNameByIdPromise(this.state.value).then(pokemonName => {
             const pokeName = TryComponent.capitalizeName(pokemonName);
             this.setState({pokemon: pokeName})
+        });
+        getPokemonFrontSpritesByIdPromise(this.state.value).then(sprites => {
+            this.setState({pokemonSprites: sprites})
         });
         event.preventDefault();
     }
@@ -38,6 +42,9 @@ class TryComponent extends React.Component {
                     </label>
                     <input type="submit" value="This one !"/>
                 </form>
+                {
+                    (this.state.pokemonSprites !== '') ? <img src={this.state.pokemonSprites} alt="Pokemon Sprite"/> : <div>No image Found</div>
+                }
                 <h2>{this.state.pokemon}</h2>
             </div>
         )

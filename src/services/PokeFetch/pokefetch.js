@@ -1,6 +1,6 @@
 const apiUrl = 'https://pokeapi.co/api/v2/';
 
-let getPokemonByIdPromise = (pokemonId) => {
+let getPokemonNameByIdPromise = (pokemonId) => {
     return new Promise(((resolve, reject) => {
         if (!pokemonId) reject();
         if (pokemonId < 0) reject();
@@ -12,5 +12,17 @@ let getPokemonByIdPromise = (pokemonId) => {
         });
     }))
 };
+let getPokemonFrontSpritesByIdPromise = (pokemonId) => {
+    return new Promise(((resolve, reject) => {
+        if (!pokemonId) reject();
+        if (pokemonId < 0) reject();
+        const url = `${apiUrl}pokemon/${pokemonId}`;
+        fetch(url).then(result => {
+            result.json().then(data => {
+                resolve(data.sprites.front_default);
+            })
+        });
+    }))
+};
 
-export {getPokemonByIdPromise};
+export {getPokemonNameByIdPromise, getPokemonFrontSpritesByIdPromise};
