@@ -12,6 +12,12 @@ class TodoList extends React.Component {
         this.deleteTask = this.deleteTask.bind(this);
     }
 
+    componentDidMount() {
+        if (localStorage.getItem('tasksContent') !== null) {
+            this.setState({tasksContent: JSON.parse(localStorage.getItem('tasksContent'))});
+        }
+    }
+
     handleChange(event) {
         this.setState({value: event.target.value});
     }
@@ -21,11 +27,13 @@ class TodoList extends React.Component {
         array.splice(index, 1);
         this.setState({
             tasksContent: array
-        })
+        });
+        localStorage.setItem('tasksContent', JSON.stringify(this.state.tasksContent));
     }
     handleSubmit(event) {
         this.state.tasksContent.push(this.state.value);
         this.setState({value: ''});
+        localStorage.setItem('tasksContent', JSON.stringify(this.state.tasksContent));
         event.preventDefault();
     }
     render() {
