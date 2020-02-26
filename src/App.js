@@ -8,6 +8,7 @@ import logo from './logo.svg';
 import './App.css';
 import TodoList from './components/TodoList/todo-list';
 import TryComponent from './components/Try/try';
+import NotFound from './components/NotFound/not-found';
 
 function App() {
     return (
@@ -27,6 +28,9 @@ function App() {
             </Route>
             <Route path="/pokemon">
               <TryComponent/>
+            </Route>
+            <Route path="*">
+              <NotFound/>
             </Route>
           </Switch>
         </Router>
@@ -51,6 +55,15 @@ function App() {
               </a>
             </Route>
             <Route path="/pokemon">
+              <a
+                  className="App-link"
+                  href="/todo"
+                  rel="noopener noreferrer"
+              >
+                Go to todo
+              </a>
+            </Route>
+            <Route path="*">
               <a
                   className="App-link"
                   href="/todo"
